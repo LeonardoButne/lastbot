@@ -1,7 +1,8 @@
 const { Client, Location, Poll, List, Buttons, LocalAuth } = require('./index');
+const express = require('express');
 
-const puppeteer = require('puppeteer-core');
-const path = require('path');
+const app = express();
+const PORT = process.env.PORT || 3000;
 
 const adminNumber = '+258853399617'; // Número do administrador do bot
 const groupName = 'Apenas testando'; // Nome do grupo permitido para redirecionamento
@@ -20,6 +21,16 @@ const client = new Client({
 
 // Inicia o cliente WhatsApp
 client.initialize();
+
+// Servidor para manter o Render ativo
+app.get('/', (req, res) => {
+    res.send('WhatsApp Bot está rodando!');
+});
+
+// Inicia o servidor
+app.listen(PORT, () => {
+    console.log(`Servidor rodando na porta ${PORT}`);
+});
 
 client.on('loading_screen', (percent, message) => {
     console.log('LOADING SCREEN', percent, message);
