@@ -25,6 +25,7 @@ const keywords = ['Procuro', 'precisar', 'Tens', 'Preciso', 'Algum', 'Alguma', '
 ]; // Lista de palavras-chave
 
 const client = new Client({
+    executablePath: "/usr/bin/chromium",
     authStrategy: new LocalAuth(),
     puppeteer: {
         headless: true, // Rodar em modo invisível (importante para Render)
