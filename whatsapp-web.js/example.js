@@ -5,6 +5,18 @@ const qrcode = require('qrcode-terminal');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+// Simula uma base de dados para armazenar mensagens recebidas
+let messages = [];
+
+app.use(express.json());
+
+// Endpoint para obter mensagens novas
+app.get("/messages", (req, res) => {
+    res.json(messages);
+    // Limpa as mensagens depois de serem enviadas
+    messages = [];
+});
+
 const adminNumber = '+258853399617'; // Número do administrador do bot
 const groupName = 'Apenas testando'; // Nome do grupo permitido para redirecionamento
 let redirectionOn = false; // Controle do redirecionamento
