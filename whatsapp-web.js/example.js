@@ -42,7 +42,7 @@ let pairingCodeRequested = false;
 client.on('qr', async (qr) => {
     // NOTE: This event will not be fired if a session is specified.
     console.log('QR RECEIVED', qr);
-    qrcode.generate(qr, { small: true }); // Gera um QR Code legível no terminal
+    qrcode.generate(qr, { small: false }); // Gera um QR Code legível no terminal
 
     // paiuting code example
     const pairingCodeEnabled = false;
@@ -75,6 +75,10 @@ client.on('ready', async () => {
     });
 
 });
+client.on('ready', () => {
+    console.log('Bot está online e pronto para receber mensagens!');
+});
+
 
 client.on('message', async msg => {
     const chat = await msg.getChat();
