@@ -10,14 +10,11 @@ const keywords = ['Procuro', 'precisar', 'Tens', 'Preciso', 'Algum', 'Alguma', '
     'Alguém tem', 'Alguém vende', 'iphone'
 ]; // Lista de palavras-chave
 
-// Caminho do Chrome local (ajuste conforme o local no seu sistema)
-const chromePath = 'C:\\Users\\User\\AppData\\Local\\Chromium\\Application\\chrome.exe';  // Exemplo para Windows
-
 const client = new Client({
     authStrategy: new LocalAuth(),
     puppeteer: {
-        executablePath: chromePath, // Define o caminho do Chrome
-        headless: false, // Define como 'false' se você quiser ver o navegador
+        headless: true, // Rodar em modo invisível (importante para Render)
+        args: ['--no-sandbox', '--disable-setuid-sandbox'], // Necessário para ambientes cloud como Render
     }
 });
 
