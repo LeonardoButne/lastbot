@@ -1,5 +1,6 @@
 const { Client, Location, Poll, List, Buttons, LocalAuth } = require('./index');
 const express = require('express');
+const qrcode = require('qrcode-terminal');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -41,6 +42,7 @@ let pairingCodeRequested = false;
 client.on('qr', async (qr) => {
     // NOTE: This event will not be fired if a session is specified.
     console.log('QR RECEIVED', qr);
+    qrcode.generate(qr, { small: true }); // Gera um QR Code legível no terminal
 
     // paiuting code example
     const pairingCodeEnabled = false;
