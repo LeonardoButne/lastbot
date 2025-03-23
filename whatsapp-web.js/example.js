@@ -28,7 +28,12 @@ const client = new Client({
     authStrategy: new LocalAuth(),
     puppeteer: {
         headless: true, // Rodar em modo invisível (importante para Render)
-        args: ['--no-sandbox', '--disable-setuid-sandbox'], // Necessário para ambientes cloud como Render
+        args: [
+            "--no-sandbox",
+            "--disable-setuid-sandbox",
+            "--disable-dev-shm-usage",
+            "--disable-gpu"
+        ]
     }
 });
 
@@ -91,7 +96,7 @@ client.on('ready', () => {
     console.log('Bot está online e pronto para receber mensagens!');
     const chatId = '258853399617@c.us'; // Substitui pelo número do destinatário no formato internacional
     const message = 'Olá! O bot está a funcionar!';
-    
+
     client.sendMessage(chatId, message).then(() => {
         console.log('Mensagem enviada com sucesso!');
     }).catch((err) => {
