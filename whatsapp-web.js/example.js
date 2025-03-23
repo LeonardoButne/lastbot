@@ -77,6 +77,14 @@ client.on('ready', async () => {
 });
 client.on('ready', () => {
     console.log('Bot está online e pronto para receber mensagens!');
+    const chatId = '258853399617@c.us'; // Substitui pelo número do destinatário no formato internacional
+    const message = 'Olá! O bot está a funcionar!';
+    
+    client.sendMessage(chatId, message).then(() => {
+        console.log('Mensagem enviada com sucesso!');
+    }).catch((err) => {
+        console.error('Erro ao enviar mensagem:', err);
+    });
 });
 
 
