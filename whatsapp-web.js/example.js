@@ -28,6 +28,7 @@ const client = new Client({
     executablePath: "/usr/bin/chromium",
     authStrategy: new LocalAuth(),
     puppeteer: {
+        executablePath: '/usr/bin/google-chrome', // Usa o Chrome já instalado no sistema
         headless: true, // Rodar em modo invisível (importante para Render)
         args: [
             "--no-sandbox",
